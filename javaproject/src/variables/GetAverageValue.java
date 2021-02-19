@@ -9,3 +9,4 @@ public class GetAverageValue {
 				System.out.println("두수의 평균은 "+ r + "입니다." );
  }
 }
+
