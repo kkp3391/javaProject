@@ -75,8 +75,8 @@ public class homework {
 				double avg = 0.0;
 				double sum = 0;
 				double maxsum = 0;
-				for (int i = 0; i < students.length; i++) { // student
-					for (int j = 1; j < students[i].length; j++) { // eng, math
+				for (int i = 0; i < students.length; i++) { 
+					for (int j = 1; j < students[i].length; j++) { 
 						sum += students[i][j];
 						if (maxsum < sum) {
 							maxsum = sum;
