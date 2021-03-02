@@ -11,9 +11,11 @@ public Student2(String name, int eng, int math) {
 	this.eng = eng;
 	this.math = math;
 	
-	public Student2() {
-		
-	}
+	
+}
+
+public Student2() {
+	
 }
 
 public String getName() {
