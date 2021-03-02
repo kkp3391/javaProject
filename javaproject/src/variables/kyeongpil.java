@@ -2,7 +2,7 @@ package variables;
 
 import java.util.Scanner;
 
-public class homework {
+public class kyeongpil {
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
 		int[][] students = null;
@@ -106,3 +106,4 @@ public class homework {
 		System.out.println("프로그램 종료");
 	}
 }
+
