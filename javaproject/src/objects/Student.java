@@ -12,8 +12,8 @@ public class Student {
 
 
 	// 생성자 : 필드값을 초기화.
-	Student() {
-		
+	public Student() {
+		System.out.println("생성자를 호출합니다");
 	}
 	Student(String studentNo) {
 		this.studentNo = studentNo;
@@ -26,15 +26,15 @@ public class Student {
 		
 	}
 	// 기능(메소드)
-	void study() {
+	public void study() {
 		System.out.println("공부합니다.");
 	}
 
-	void run() {
+	public void run() {
 		System.out.println("운동합니다.");
 	}
 	
-	void introuduce() {
+	public void introuduce() {
 		System.out.println("학번" + studentNo + "학년" + eng + "영어점수" + math + "수학점수");
 	}
 }
