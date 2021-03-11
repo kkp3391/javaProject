@@ -76,3 +76,35 @@ public class BoardMain {
 		System.out.println("프로그램 종료");
 	}// end of main
 }// end of class
+
+
+
+
+
+
+
+
+
+
+
+String id;
+String pw;
+String trueID = "admin";
+String truePW = "super";
+do
+{
+	System.out.print("ID : ");
+	id = scan.next();
+	System.out.print("PW : ");
+	pw = scan.next();
+	if(!id.equals(trueID)) System.out.println("아이디가 없습니다.");
+	else {
+		if(!pw.equals(truePW)) System.out.println("잘못된 비밀번호입니다.");
+		else {
+			System.out.println("로그인 되었습니다.");
+			break;
+		}
+	}
+}
+
+
