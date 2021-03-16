@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class EmpDAO {
 	Connection conn = null;
@@ -79,5 +80,10 @@ public class EmpDAO {
 		
 		System.out.println("호출완료");
 		return employees;
+	}
+
+	public List<Employee> getEmpList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
