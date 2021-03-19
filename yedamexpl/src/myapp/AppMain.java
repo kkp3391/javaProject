@@ -1,6 +1,9 @@
 package myapp;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,7 +22,16 @@ public class AppMain extends Application {
 		
 		Button button = new Button();
 		button.setText("확인");
-		
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				Platform.exit();
+				
+			}
+			
+		});
+		//컨테이너
 		VBox root = new VBox();
 		root.setPrefWidth(350);
 		root.setPrefHeight(150);
@@ -40,4 +52,6 @@ public class AppMain extends Application {
 		Application.launch(args); //메인 메소드 매개
 	}
 }
-//--module-path /C:\Dev\lib\javafx-sdk-11.0.2\lib" --add-modules=javafx.controls
+//(실행구성)->인수->  --module-path "C:\Dev\lib\javafx-sdk-11.0.2\lib" --add-modules=javafx.controls
+//EclipseMaketplace 에서 javafx 검색후 다운
+//scene bulier 다운로드 
