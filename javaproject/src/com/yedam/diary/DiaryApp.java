@@ -4,8 +4,8 @@ public class DiaryApp {
 	DAO dao;
 
 	public void start() {
-		dao = new DiaryListDAO();
-//		dao = new DiaryOracleDAO();
+		//dao = new DiaryListDAO();
+		dao = new DiaryOracleDAO();
 
 		int menuNum = 0;
 
@@ -54,7 +54,8 @@ public class DiaryApp {
 		case 수정: update(); break;
 		case 삭제: delete(); break;
 		case 전체조회: selectAll(); break; 
-
+		case 날짜검색: selectDate(); break;
+		case 내용검색: selectContent(); break;
 		}
 
 	}
@@ -83,21 +84,24 @@ public class DiaryApp {
 
 	// 수정
 	public void update() {
-		System.out.println("수정선택>>");
+		System.out.println("수정>>");
 		System.out.println("날짜:[yyMMdd]");
 		String wdate = StdInputUtil.readDate();
-		System.out.println("수정내용입력>>");
-		String contents = StdInputUtil.readMultiLine();
-		
-		DiaryVO vo = new DiaryVO();
-		vo.setWdate(wdate);
-		vo.setContents(contents);
-		dao.update(vo);
-		int cnt = dao.update(vo);
-		System.out.println("수정완료");
-		
-		
+		DiaryVO vo = dao.selectDate(wdate);
+		if (vo == null) {
+			System.out.println("없는 날짜입니다.");
+		} else {
+			System.out.print("내용: ");
+			String contents = StdInputUtil.readMultiLine();
+
+			vo = new DiaryVO();
+			vo.setWdate(wdate);
+			vo.setContents(contents);
+			dao.update(vo);
+			System.out.println("수정 완료");
+		}
 	}
+
 
 	// 삭제
 	public void delete() {
@@ -111,9 +115,40 @@ public class DiaryApp {
 	// 전체조회
 	public void selectAll() {
 		System.out.println("전체조회선택>>");
-		for(DiaryVO vo : dao.selectAll()) {
-			System.out.println(vo.getWdate());
-			System.out.println(vo.getContents());
+		for(DiaryVO vo : dao.selectAll()) {	
+			print(vo);
 		}
+	}
+	//날짜검색
+	public void selectDate() {
+		System.out.println("날짜검색[yyMMdd]>>");
+		String wdate = StdInputUtil.readDate();
+		DiaryVO vo = dao.selectDate(wdate);
+		if(vo != null) {
+			print(vo);	
+		} else {
+			System.out.println("없는 데이터입니다.");
+		}
+		
+		
+	}
+	//내용검색
+	public void selectContent() {
+		System.out.println("내용검색>>");
+		String contents = StdInputUtil.readMultiLine();
+		DiaryVO vo = dao.selectContent(contents);
+		if (vo != null) {
+			print(vo);
+		} else {
+			System.out.println("없는 내용입니다.");
+		}
+	}
+	
+	
+	public void print(DiaryVO vo) {
+		System.out.println("날짜는 : " + vo.getWdate());
+		System.out.println("내용은 : " + vo.getContents());
+		System.out.println("----------------------------");
+		
 	}
 }// end of class
