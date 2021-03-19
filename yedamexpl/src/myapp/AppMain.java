@@ -40,3 +40,4 @@ public class AppMain extends Application {
 		Application.launch(args); //메인 메소드 매개
 	}
 }
+//--module-path /C:\Dev\lib\javafx-sdk-11.0.2\lib" --add-modules=javafx.controls
