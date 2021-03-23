@@ -52,6 +52,7 @@ public class AppMain extends Application {
 		Application.launch(args); //메인 메소드 매개
 	}
 }
-//(실행구성)->인수->  --module-path "C:\Dev\lib\javafx-sdk-11.0.2\lib" --add-modules=javafx.controls
+//구글에서 javaFx 검색후 다운
+//(실행구성)->인수->  --module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml
 //EclipseMaketplace 에서 javafx 검색후 다운
 //scene bulier 다운로드 
