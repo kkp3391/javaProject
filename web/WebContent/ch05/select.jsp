@@ -20,15 +20,19 @@
 
  <table border="1" style="width:30%">
 	<tr>
-		<td><h2>이름:<%=name %></h2></td>
+		<td><h2>이름</h2></td>
+	<td><%=name %></td>
 	</tr>
 	<tr>
-		<td><h2>성별:<%=sex %></h2></td>
+		<td><h2>성별</h2></td>
+		<td><%=sex %></td>
 	</tr>
 	<tr>
-		<td><h2>학년:<%=year %></h2></td>
+		<td><h2>학년</h2></td>
+		<td><%=year %></td>
 	</tr>
 	<tr>
+	<td><h2>관심</h2></td>
 	<td>
 		<%for(int i=0; i< subjects.length; i++) {
 			 String str = subjects[i]; 
