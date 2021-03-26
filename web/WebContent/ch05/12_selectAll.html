@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="select.jsp" method="get">
+       <table border="1" style="width:30%">
+        <caption><h1>입력정보</h1></caption>
+       <tr>
+        <td>학생</td>
+        <td>    <input type="text" name="name"  value="백승엽"> </td>
+        </tr>
+        <tr>
+            <td>성별</td>
+            <td><input type="radio" name="sex" value="male" checked> 남자
+                <input type="radio" name="sex" value="female"> 여자</td>
+        </tr>
+        <tr>
+            <td>학년</td>
+            <td>
+                <input type="radio" name="year" value="1" > 1학년
+        <input type="radio" name="year" value="2" > 2학년
+        <input type="radio" name="year" value="3" checked> 3학년
+        <input type="radio" name="year" value="4" > 4학년
+            </td>
+        </tr>
+        <tr>
+           <td>관심</td>
+            <td>  <input type="checkbox" name="subject" value="HTML5" checked> HTML5
+                <input type="checkbox" name="subject" value="CSS3" checked> CSS3
+                <input type="checkbox" name="subject" value="JavaScript" > JavaScript
+                <input type="checkbox" name="subject" value="Jquery" checked> Jquery</td>
+        </tr>
+        <tr>
+            <td>취미</td>
+            <td>
+                <select name="hobby" size="4" multiple>
+                    <option value="1"  >독서</option>
+                    <option value="2"selected>운동</option>
+                    <option value="3"selected>요리</option>
+                    <option value="4"selected> 낮잠</option>
+                </select>
+            </td>
+        </tr>     
+        <tr>
+            <th></th>
+            <th rowspan="2"><input type="submit" value="전송"><input type="reset" value="취소"></th>
+            <!-- <th><input type="reset" value="취소"></th> -->
+        </tr> 
+    </table> 
+    </form>
+</body>
+</html>
