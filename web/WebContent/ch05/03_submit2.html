@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch05/03_submit2.html</title>
+</head>
+<body id="dby">
+    <form action="submit.jsp" method="get"></form>
+    <script>
+    let h2Tag = document.createElement("h2");
+    let text = document.createTextNode("입력 양식 데이터 전송 버튼");
+    h2Tag.appendChild(text);
+    dby.appendChild(h2Tag);
+    
+    let frm = document.createElement("form");
+    frm.setAttribute("action", "page.jsp");
+    frm.setAttribute("mothod","get");
+    
+    let pTag = document.createElement("p");
+    let inputTag = document.createElement("input");
+    inputTag.setAttribute("type", "text");
+    inputTag.setAttribute("name", "name");
+    text = document.createTextNode("이름:");
+    pTag.appendChild(text);
+    pTag.appendChild(inputTag);
+    frm.appendChild(pTag);
+   
+
+
+    pTag = document.createElement("p");
+    inputTag = document.createElement("input");
+    inputTag.setAttribute("type", "text");
+    inputTag.setAttribute("name", "major");
+    text = document.createTextNode("학과:");
+    pTag.appendChild(text);
+    pTag.appendChild(inputTag);
+    frm.appendChild(pTag);
+   
+
+    
+    inputTag = document.createElement("input");
+    inputTag.setAttribute("type", "submit", "전송");
+    frm.appendChild(inputTag);
+    dby.appendChild(frm);
+</script>
+
+</body>
+
+
+
+</html>

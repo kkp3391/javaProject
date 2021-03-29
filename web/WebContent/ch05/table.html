@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<table border="1" id="tbl">   
+           
+    
+</table>
+    <script>
+        let tblTag = document.getElementById("tbl");
+        let trTag = document.createElement("tr");
+        let tdTag = document.createElement("td");
+        let text = document.createTextNode("아이디");
+        tdTag.appendChild(text);
+        trTag.appendChild(tdTag);
+        tblTag.appendChild(trTag);
+        
+        tdTag = document.createElement("td");
+        let inputTag = document.createElement("input");
+        tdTag.appendChild(inputTag);
+        trTag.appendChild(tdTag);
+        tblTag.appendChild(trTag);
+    
+
+        trTag = document.createElement("tr");
+        tdTag = document.createElement("td");
+        text = document.createTextNode("비밀번호");
+        tdTag.appendChild(text);
+        trTag.appendChild(tdTag);
+        tblTag.appendChild(trTag);
+
+        tdTag = document.createElement("td");
+        inputTag = document.createElement("input");
+        inputTag.setAttribute("type","password");        
+        tdTag.appendChild(inputTag);
+        trTag.appendChild(tdTag);
+        tblTag.appendChild(trTag);
+    
+        
+
+
+
+        
+
+
+
+        // let inputTag = document.createElement("input");
+        // inputTag.setAttribute("type","password");
+        // inputTag.setAttribute("name","password");
+        // <input type="password", name="passwd">
+    </script>
+</body>
+</html>

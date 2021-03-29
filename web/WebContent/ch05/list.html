@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>Fruits
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Melon</li>
+    </ul>
+<br><br><br>
+    <ul id="fruit"></ul>
+    <script>
+    let liTag = document.createElement("li"); //tag 만들때
+    let text = document.createTextNode("Apple"); //텍스트값을 생성
+    liTag.appendChild(text); //<li>Apple<li>
+    let ulTag = document.getElementById("fruit");
+    ulTag.appendChild(liTag);
+    
+
+    
+    liTag = document.createElement("li");
+    text = document.createTextNode("Banana");
+    liTag.appendChild(text);
+    ulTag.appendChild(liTag);
+    
+    liTag = document.createElement("li");
+    text = document.createTextNode("Melon"); //텍스트값을 생성
+    liTag.appendChild(text);
+    ulTag.appendChild(liTag);
+    </script>
+</body>
+</html>
+
+
+<!-- <button>클릭</button> -->
