@@ -12,7 +12,7 @@
 	String major = request.getParameter("major");
 %>
     <h2>이름:<%=name %></h2>
-	<h2>전공:<%=major %></h2>
+	<h2>학과:<%=major %></h2>
 
 </body>
 </html>

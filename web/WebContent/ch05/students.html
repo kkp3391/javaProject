@@ -10,11 +10,7 @@
 </table>
 <body>
     <script>
-        let scores = [
-            ["홍길동" ,80],
-            ["김민수" ,85],
-            ["박민규" ,90]
-        ];
+    
 
         let tbl = document.getElementById("tbl");
         trTag = document.createElement("tr");
@@ -31,21 +27,51 @@
         tbl.appendChild(trTag);
 
           // tr에 데이터.
-
-        trTag = document.createElement("tr");
-        tdTag = document.createElement("td");
+          let scores = [
+            ["홍길동" ,80],
+            ["김민수" ,85],
+            ["박민규" ,90]
+        ];
           for(let i = 0; i <scores.length; i++) {
-            text = document.createTextNode(scores[i][0]);
-            text.setAttribute("name", "이름")
-           // text.setAttribute("score", "score");
-            //console.log("이름", scores[i][0], "비번", scores[i][1]);
+        let trTag = document.createElement("tr");
+        let tdTag = document.createElement("td");
+        let text = document.createTextNode(scores[i][0]);
+        let sum = 0
+        
            tdTag.appendChild(text);
            trTag.appendChild(tdTag);
+                
+
+          tdTag = document.createElement("td");
+          text = document.createTextNode(scores[i][1]);
+          tdTag.appendChild(text);
+          trTag.appendChild(tdTag);   
             tbl.appendChild(trTag);
-                
-                
-                
+            function average(scores) {
+  var sum = 0.0;
+
+  for (var i = 0; i < scores[i][1].length; i++)
+    sum += scores[i][1];
+
+  return sum / scores[i][1].length;
+           
             }
+          }
+           // tbl = document.createElement(tbl);    
+              trTag = document.createElement("tr");
+              tdTag = document.createElement("td");
+              text = document.createTextNode("평균");
+              tdTag.appendChild(text);
+              trTag.appendChild(tdTag);
+                           
+            
+            tdTag = document.createElement("td");
+            text = document.createTextNode(scores[i][1]);
+            tdTag.appendChild(text);
+            trTag.appendChild(tdTag);
+            tbl.appendChild(trTag);
+            
+
     </script>
 </body>
 </html>
