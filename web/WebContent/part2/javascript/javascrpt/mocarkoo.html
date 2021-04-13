@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <div id="show">
+        <div></div>
+        <ul id="list"></ul>
+        <ul id="members"></ul>
+
+        <script>
+            let json = [{
+                    id: 1,
+                    first_name: "Candy",
+                    last_name: "Nial",
+                    email: "cnial0@illinois.edu",
+                    gender: "Genderfluid",
+                    ip_address: "141.12.74.30"
+                },
+                {
+                    id: 2,
+                    first_name: "Jessee",
+                    last_name: "Meech",
+                    email: "jmeech1@examiner.com",
+                    gender: "Male",
+                    ip_address: "56.75.34.225"
+                },
+                {
+                    id: 3,
+                    first_name: "Garrot",
+                    last_name: "Rossbrook",
+                    email: "grossbrook2@wikia.com",
+                    gender: "Genderqueer",
+                    ip_address: "115.48.138.173"
+                },
+                {
+                    id: 4,
+                    first_name: "Federica",
+                    last_name: "Dory",
+                    email: "fdory3@addtoany.com",
+                    gender: "Non-binary",
+                    ip_address: "238.87.4.205"
+                },
+                {
+                    id: 5,
+                    first_name: "Cash",
+                    last_name: "Swyne",
+                    email: "cswyne4@answers.com",
+                    gender: "Bigender",
+                    ip_address: "151.23.113.131"
+                }
+            ];
+
+            let title = {
+                id: "아이디",
+                first_name: "이름",
+                last_name: "성",
+                email: "이메일",
+                gender: "남여"
+            }
+
+            // 선택 아이디 이름 성 이메일 남여 삭제
+            // check, id, first_name, last_name, email. gender , button 
+            // check, id, first_name, last_name, email. gender , button 
+            // check, id, first_name, last_name, email. gender , button 
+            // check, id, first_name, last_name, email. gender , button 
+
+            let tr, th, text, tbl, chkbox, btn;
+            let bdy = document.getElementsByTagName("body");
+            tbl = document.createElement("table");
+            bdy[0].appendChild(tbl);
+            // tbl = document.getElementById("tbl");
+            tbl.setAttribute("id", "tbl");
+            tbl.setAttribute("border", "1");
+
+            //타이틀.
+            tr = document.createElement("tr");
+            tbl.appendChild(tr);
+
+
+
+            // 체크박스 항목 추가.
+            chkbox = document.createElement("input");
+            chkbox.setAttribute("type", "checkbox");
+            chkbox.onchange = allCheck;
+            td = document.createElement("th");
+            td.appendChild(chkbox);
+            tr.appendChild(td);
+
+            for (titles in title) {
+                th = document.createElement("th");
+                text = document.createTextNode(title[titles]);
+                th.appendChild(text);
+                tr.appendChild(th);
+
+            }
+            // button 항목 추가.
+            btn = document.createElement("input");
+            btn.setAttribute("type", "button");
+            btn.setAttribute("value", "Select");
+            btn.onclick = delSelcted;
+            td = document.createElement("th");
+            td.appendChild(btn);
+            tr.appendChild(td);
+
+
+            // data 항목.
+            for (data of json) {
+                tr = document.createElement("tr");
+                // id, first_name , last_name, email, gender, ip_address
+
+                // 체크박스 항목 추가.
+                chkbox = document.createElement("input");
+                chkbox.setAttribute("type", "checkbox");
+                // chkbox.onchange = allCheck2; 이자리
+                td = document.createElement("td");
+                td.appendChild(chkbox);
+                tr.appendChild(td);
+
+                for (field in title) {
+                    td = document.createElement("td");
+                    text = document.createTextNode(data[field]);
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                // button 항목 추가.
+                btn = document.createElement("input");
+                btn.setAttribute("type", "button");
+                btn.setAttribute("value", "Del");
+                btn.onclick = delFunc;
+                td = document.createElement("td");
+                td.appendChild(btn);
+                tr.appendChild(td);
+
+                tbl.appendChild(tr);
+
+            }
+
+            function delFunc() {
+                console.log(this.parentNode.parentNode.remove());
+            }
+
+            function allCheck() {
+                let tChk = document.querySelector('th>input[type="checkbox"]');
+                let checks = document.querySelectorAll('td>input[type="checkbox"]');
+                for (let i = 0; checks.length; i++) {
+                    checks[i].checked = tChk.checked;
+                }
+
+                
+            }
+                    // function allCheck2() {
+                    
+                    //     }
+
+                //선택 지우기
+                function delSelcted(){
+                    let checkedAll = document.querySelectorAll('td>input[type="checkbox"]:checked');
+                    console.log(checkedAll);
+                    for(let i = 0; i < checkedAll.length; i++){
+                        checkedAll[i].parentNode.parentNode.remove();
+                    }
+                }
+            
+        </script>
+    </div>
+</body>
+
+</html>

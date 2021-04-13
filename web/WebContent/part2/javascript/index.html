@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="javascrpt/object.js"></script> -->
+</head>
+<body id="bdy">
+    <div id="show"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <ul id="list"></ul>
+    <ul id="members"></ul>
+    <!-- <script src="javascrpt/class.js"></script>
+    <script src="javascrpt/object.js"></script>
+    <script src="javascrpt/object2.js"></script>
+    <script src="javascrpt/Array.js"></script>
+    <script src="javascrpt/String.js"></script> -->
+    <!-- <script src="javascrpt/function.js"></script> -->
+    <table id="tbl" border= '1'"></table>
+    <p/>
+        <button onclick="changeColor()">색상변경하기</button>
+<script>
+    let numbers = [23,45,65,12,57];
+    let sum = 0;
+    let list = document.getElementById('list');
+    numbers.forEach(function(a,b,c) {
+
+        sum+=a;
+        let li = document.createElement('li');
+        let text = document.createTextNode(a);
+        li.appendChild(text);
+        list.appendChild(li);
+    });
+    console.log(sum);
+    
+    class Student {
+        constructor(sno, name, score) {
+            this.sno=sno;
+            this.name = name;
+            this.score=score;
+        }
+    }
+    let student = {
+        sno: '111',
+        name: 'Hong',
+        score: 80
+    }
+
+    let students = [];
+    students.push(student);
+    students.push(new Student('2222','Hwang',90));
+    students.push(new Student('3333','Park',70));
+
+    function createTr(std) {
+        let trTag = document.createElement('tr');
+        let td = document.createElement('td');
+        let chk = document.createElement('input');
+        chk.setAttribute('type','checkbox');
+        td.appendChild(chk);
+        trTag.appendChild(td);
+        for(field in std) {
+        let tdTag = document.createElement('td');
+        let text = document.createTextNode(student[field]);
+        tdTag.appendChild(text);
+        trTag.appendChild(tdTag);
+        }
+        td = document.createElement('td');
+        let btn = document.createElement('button');
+        btn.innerHTML = 'OK';
+        btn.onclick = clickFnc;
+        td.appendChild(btn);
+        trTag.appendChild(td);
+        // let trTag = document.createElement('tr');
+        // let tdTag = document.createElement('td');
+        // let text = document.createTextNode('Hong');
+        // tdTag.appendChild(text);
+        // trTag.appendChild(tdTag);
+
+        // tdTag = document.createElement('td');
+        // text = document.createTextNode('80');
+        // tdTag.appendChild(text);
+        // trTag.appendChild(tdTag);
+
+        return trTag;
+    }
+    let tbl = document.getElementById('tbl');
+
+    students.forEach(function(val, idx,ary) {
+        let newTr = createTr(student);    
+        tbl.appendChild(newTr);
+    });
+    function clickFnc() {
+        this.parentNode.parentNode.remove();
+    }
+    
+    // document.getElementById('tbl').appendChild(newTr);    
+</script>
+</body>
+</html>
+

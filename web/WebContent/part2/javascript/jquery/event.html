@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="event.js"></script> -->
+    <script>
+        console.log('1');
+
+    $.ajax( {
+        url: '../MOCK_DATA.json',
+        success: function (result) {
+            let objs = $(result).map(function (idx,obj) {
+                let person = {};
+                person.name = obj.first_name;
+                person.email = obj.email;
+                return person;
+            }).filter(function (idx, obj) {
+                return idx <5;
+            // let objf = $(objs).filter(function (idx, obj) {
+            //     return idx <5;
+            });
+            console.log(objs);
+            console.log('2');
+
+            let tbl = $('<table/>');
+            tbl.attr('border' , '1');
+            
+            $(objs).each(function (idx, obj) {
+                let trTag = $('<tr/>');
+                
+                trTag.mouseover = function() {
+                    $(this).css('background-color', 'yellow');
+                }
+                
+                let tdTag = $('<td/>');
+                let ips = $('<input/>').attr('type', 'checkbox');
+                tdTag.append(tdTag.append(ips));
+                for (field in obj) {
+                    let tdTag = $('<td />').html(obj[field]);
+                    trTag.append(tdTag);
+                }
+             tbl.append(trTag);   
+            }); 
+            $('body').append(tbl);
+            
+            
+        }
+    });
+    console.log('3');
+    function delChecked() {
+        console.log($(this));
+        $('td>input[type="checkbox"]:checked').remove();
+    }
+    </script>
+</head>
+<body>
+    <button id="btn">클릭</button>
+    <button id="bton">Click</button>
+    <button id="btnOn">클릭</button>
+    <script>
+        //jQuery.
+        $('#btnOn').click(function() {
+            console.log('클릭되었습니다');
+        });
+        $('#btnOn').mouseover(function() {
+            $(this).css('background-color','yellow');
+        });
+        $('#btnOn').mouseout(function() {
+            $(this).css('background-color','');
+        });
+        $('#buttonOn').on('click', function() {
+            console.log('클릭되었습니다');
+        });
+        $('#buttonOn').on({
+            'mouseover':function() {$(this).css('background-color','yellow');},
+            'mouseout': function() {$(this).css('background-color','');}
+        });
+
+        //자바스크립트
+        let btn = document.getElementById('btn');
+        btn.onclick = function() {
+            alert('클릭버튼이 눌렀습니다!.');
+        }
+        btn.onmouseover = function() {
+            this.style.backgroundColor = 'yellow';
+        }
+        btn.onmouseout = function() {
+            this.style.backgroundColor = '';
+        }
+        let bton = document.getElementById('bton');
+        bton.addEventListener('click', function () {
+            alert('클릭버튼이 눌렀습니다!.');
+        })
+        bton.addEventListener('mouseover', function() {
+            this.style.backgroundColor = '';
+        })
+        console.log('4');
+    </script>
+</body>
+</html>
