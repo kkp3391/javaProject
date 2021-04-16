@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+      $(function () {
+        $.ajax({
+            url:'../employees.xml', 
+            dataType:'xml',
+            success:function(data) {
+                var $data = $(data).find('record');
+                if($data.length > 0) {
+                    var tb=$('<table/>');
+                    tb.attr('border' , '1');
+                    $.each($data, function(i,o) {
+                        let $emp_id =  $(o).find('emp_id').text();
+
+                        let $first_name =  $(o).find('first_name').text();
+
+                        let $phone_nember = $(o).find('phone_number').text();
+
+
+                        let row = $('<tr/>').append(
+                                $('<td/>').text($emp_id),
+                                $('<td/>').text($first_name),
+                                $('<td/>').text($phone_nember)
+                    );
+                    tb.append(row);
+                    });
+                    $('.wrap').append(tb);
+                }
+                    
+                }        
+        });
+    });
+</script>
+
+</head>
+<body>
+    <div class="wrap"></div>
+</body>
+</html>

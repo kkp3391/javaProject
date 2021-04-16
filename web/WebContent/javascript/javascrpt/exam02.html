@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url:'members.json', success:function(data) {
+                    let tbl = $('<table border="1" />');
+                    // let trTag = $('<tr/>');
+                    for(let i in data) {
+                        let $mem_id = data[i].mem_id;
+                        let $first_name = data[i].first_name;
+                        let $last_name = data[i].last_name;
+                        let $gender = data[i].gender;
+                        let $email = data[i].email;
+                        let $address = data[i].address;
+    
+                        let row = $('<tr/>').append(
+                                    $('<td/>').text($mem_id),
+                                    $('<td/>').text($first_name),
+                                    $('<td/>').text($last_name),
+                                    $('<td/>').text($email),
+                                    $('<td/>').text($gender),
+                                    $('<td/>').text($address)
+                        );
+                        tbl.append(row);
+                    }
+                    console.log(data);
+                    // for(let i=0; i<data.length; i++) {
+                    // let tdTag = $('<td />').html(data[i].id);
+                    // trTag.append(tdTag);
+                // }
+                $('body').append(tbl);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+  
+</body>
+</html>

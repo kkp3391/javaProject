@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../jquery-3.6.0.min.js"></script>
+<script>
+   $(document).ready(function() {
+      let query = 'boardNo=4&title=test&content=test&writer=user1';
+      $.ajax({
+         url:'ajaxList.jsp',
+         dataType: 'json',
+         success: function (result) {
+            console.log(result);
+            
+         }
+      });
+      $('#frm').submit(function(event) {
+         event.preventDefault();
+         console.log($('#frm').serialize());
+         
+         $.ajax({
+            url : $('#frm').attr('action'),
+            data : {
+               boardNo : $('input[name="boardNo"]').val(),
+               title : $('input[name="title"]').val(),
+               content : $('textarea[name="content"]').val(),
+               writer : $('input[name="writer"]').val()
+            },
+            data:$('#frm').serialize(),
+            success : function(data) {
+               let result = JSON.parse(data); //JSON = > Object
+               console.log(result);
+               
+               $('input[name="boardNo"]').val('');
+               $('input[name="title"]').val('');
+               $('textarea[name="content"]').val('');
+               $('input[name="writer"]').val('');
+               
+               // 테이블의 제일 마지막 위치에 tr생성한 후 append.
+               
+               for(data of result) {
+            	trTag = $('<tr />');
+            	trTag.append(
+               	$('<td />').html(result.boardNo),
+            	$('<td />').html(result.title),
+            	$('<td />').html(result.content),
+            	$('<td />').html(result.writer),
+            	$('<td />').html(result.creationDate),
+            	$('<td />').html($('<button />').html('삭제')).click()
+            	
+               );
+             tbl.append(trTag);
+                
+            }
+            $('#show').append(tbl);
+         }, 
+         error: function(reject) {
+        	 console.error(reject);
+         }
+         
+      });
+         function delDate() {
+        //화면삭제
+        
+        //데이터베이스 삭제
+         
+         }
+         
+   
+</script>
+
+</head>
+<body>
+   <form action="ajax.jsp" id="frm" method="GET">
+      <div>
+         게시글번호 : <input type="text" name="boardNo">
+      </div>
+      <div>
+         제목 : <input type="text" name="title">
+      </div>
+      <div>
+         내용:
+         <textarea name="content" cols="30" rows="10"></textarea>
+      </div>
+      <div>
+         작성자 : <input type="text" name="writer">
+      </div>
+      <div>
+         <input type="submit" value="send">
+      </div>
+      <div>
+         <input type="reset" value="Cancel">
+      </div>
+
+   </form>
+   
+   <div id="show"> </div>
+</body>
+</html>
